@@ -41,15 +41,12 @@ dependencies {
     implementation 'com.github.duolingo:rtl-viewpager:v2.0.0'
 }
 
-//afterEvaluate {
-//    publishing {
-//        publications {
-//            release(MavenPublication) {
-//                from components.release
-//                groupId = 'com.github.Mark-Mamdouh'
-//                artifactId = 'CardSlider'
-//                version = '1.0.1'
-//            }
-//        }
-//    }
-//}
+publishing {
+    publications {
+        release(MavenPublication) {
+            afterEvaluate {
+                from components.release
+            }
+        }
+    }
+}
