@@ -1,1 +1,1 @@
-include ':sample', ':cardslider'
+include ':cardslider'
