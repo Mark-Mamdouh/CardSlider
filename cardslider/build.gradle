@@ -7,9 +7,9 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'maven-publish'
 
 android {
+
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
-
 
     defaultConfig {
         minSdkVersion 17
@@ -25,6 +25,18 @@ android {
 
     dataBinding {
         enabled = true
+    }
+
+    subprojects {
+        afterEvaluate { project ->
+            if (project.hasProperty('android')) {
+                project.android {
+                    if (namespace == null) {
+                        namespace project.group
+                    }
+                }
+            }
+        }
     }
 }
 
@@ -46,7 +58,7 @@ publishing {
         mavenJava(MavenPublication) {
             groupId = 'com.github.Mark-Mamdouh'
             artifactId = 'CardSlider'
-            version = '1.0.7'
+            version = '1.0.8'
         }
     }
 }
